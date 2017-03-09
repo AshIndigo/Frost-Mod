@@ -31,7 +31,7 @@ import net.minecraftforge.fml.relauncher.Side;
 
 
 // TODO Do math magic for centering
-@Mod(modid = FrostConstants.MODID, name = "Frost", version = "0.0.1", dependencies = "required-before:indigoutils")
+@Mod(modid = FrostConstants.MODID, name = "Frost", version = "0.0.1", dependencies = "required-after:indigoutils")
 public class Frost extends IndigoMod {
 	
 	@Instance

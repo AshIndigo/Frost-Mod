@@ -16,8 +16,6 @@ public class FrostItems {
 	public static void preInit() {
 		frostingot = new UtilsItem(FrostConstants.MODID, "frostingot", "Frost Ingot");
 		journal = new ItemJournal(FrostConstants.MODID, "journal", "Frozen Journal");
-		if (Loader.isModLoaded("baubles")) {
-			icering = new ItemIceRing(FrostConstants.MODID, "icering", "Ice Ring");
-		}
+		icering = new ItemIceRing(FrostConstants.MODID, "icering", "Ice Ring");
 	}
 }
