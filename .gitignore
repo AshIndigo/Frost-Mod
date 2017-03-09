@@ -23,4 +23,3 @@ run
 
 *.txt
 src/api/java/mezz/jei/api/**/*.class
-libs
