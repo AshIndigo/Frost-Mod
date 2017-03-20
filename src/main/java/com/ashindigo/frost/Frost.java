@@ -2,6 +2,7 @@
 
 import org.apache.logging.log4j.Level;
 
+import com.ashindigo.frost.entities.EntityHailSphere;
 import com.ashindigo.frost.network.FrostMaxPacketManager;
 import com.ashindigo.frost.network.FrostMaxPowerPacket;
 import com.ashindigo.frost.network.FrostPowerPacket;
@@ -11,26 +12,38 @@ import com.ashindigo.frost.tileentities.TileEntityFrozenTable;
 import com.ashindigo.frost.world.FrozenWastelandBiome;
 import com.ashindigo.indigolib.modding.IndigoMod;
 
+import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.BiomeManager.BiomeEntry;
 import net.minecraftforge.common.BiomeManager.BiomeType;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
+import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 
 
 // TODO Do math magic for centering
+// TODO Weapons/Tools - Frostwave, Hail Sphere Launcher
+// TODO Terrain check for power +/-
+// TODO Machines/Blocks - Frost Discharger, Ice freezer
+// TODO Debug items - Creative Gem
+// TODO Entities - Yetis
+// FE can not be used in its default state. It requires a foci to shape into something more usable
 @Mod(modid = FrostConstants.MODID, name = "Frost", version = "0.0.1", dependencies = "required-after:indigoutils")
 public class Frost extends IndigoMod {
 	
@@ -39,8 +52,15 @@ public class Frost extends IndigoMod {
 	
 	public static final SimpleNetworkWrapper INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel(FrostConstants.MODID);
 	
+	public static DamageSource FROSTDMG = new DamageSource("frost").setMagicDamage();
+	
 	public static FrozenWastelandBiome fwbiome = new FrozenWastelandBiome(new Biome.BiomeProperties(FrostConstants.WASTELANDNAME).setBaseHeight(0.1f));
 
+	@SidedProxy(serverSide = "com.ashindigo.frost.FrostCommonProxy", clientSide = "com.ashindigo.frost.FrostClientProxy")
+	public static FrostCommonProxy proxy;
+
+	public static ToolMaterial frostToolmat = EnumHelper.addToolMaterial(FrostConstants.MODID, 3, 450, 7.0F, 7.0F, 15);
+	
 	@Override
 	@EventHandler
 	public void preinit(FMLPreInitializationEvent event) {
@@ -51,6 +71,7 @@ public class Frost extends IndigoMod {
 		BiomeManager.addBiome(BiomeType.ICY, new BiomeEntry(fwbiome, 3));
 		MinecraftForge.EVENT_BUS.register(new FrostEventHandler());
 		GameRegistry.registerTileEntity(TileEntityFrozenTable.class, "frozentable");
+		EntityRegistry.registerModEntity(new ResourceLocation(FrostConstants.MODID, "hailsphere"), EntityHailSphere.class, "hailsphere", 0, instance, 50, 50, true);
 		FrozenTableRecipes.initRecipes();
 	}
 
@@ -61,8 +82,11 @@ public class Frost extends IndigoMod {
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new FrostGuiHandler());
 		INSTANCE.registerMessage(FrostPowerPacketManager.class, FrostPowerPacket.class, 0, Side.CLIENT);
 		INSTANCE.registerMessage(FrostMaxPacketManager.class, FrostMaxPowerPacket.class, 1, Side.CLIENT);
+		// Disabling Research Packet
+		//INSTANCE.registerMessage(FrostListPacketManager.class, FrostListPowerPacket.class, 2, Side.CLIENT);
 		FrostJournalEntries.initTitles();
 		FrostJournalEntries.initDesc();
+		proxy.preInit();
 	}
 
 	@Override

@@ -30,7 +30,9 @@ public class FrostEventHandler {
 	@SubscribeEvent
 	public static void checkChunkChange(EnteringChunk chunkEvent) {
 		if (chunkEvent.getEntity() instanceof EntityPlayer) {
-			FrostPowerManager.refreshPlayerPower((EntityPlayer) chunkEvent.getEntity());
+			if (FrostResearchManager.playerHasResearch((EntityPlayer) chunkEvent.getEntity(), FrostResearchManager.BEGIN)) {
+				FrostPowerManager.refreshPlayerPower((EntityPlayer) chunkEvent.getEntity());
+			}
 		}
 	}
 	
@@ -88,19 +90,19 @@ public class FrostEventHandler {
 	public static void coldCraft(ItemCraftedEvent craftEvent) {
 		if (!FrostResearchManager.playerHasResearch(craftEvent.player, FrostResearchManager.FROZENTABLE)) {
 			if (BiomeDictionary.getTypes(UtilsPlayerHelper.getPlayerBiome(craftEvent.player)).contains(Type.COLD)) {
-				if (UtilsNBTHelper.getPlayerPersistedTag(craftEvent.player).getBoolean(FrostConstants.POWERUNLOCKED)) {
+				//if (UtilsNBTHelper.getPlayerPersistedTag(craftEvent.player).getBoolean(FrostConstants.POWERUNLOCKED)) {
 					if (craftEvent.player.world.getBlockState(UtilsPlayerHelper.getBlockPosFromRayTrace(craftEvent.player)).getBlock() == Blocks.CRAFTING_TABLE) {
 						craftEvent.player.world.setBlockState(UtilsPlayerHelper.getBlockPosFromRayTrace(craftEvent.player), FrostBlocks.frozenTable.getBlockState().getBaseState());
 						FrostResearchManager.addResearch(craftEvent.player, FrostResearchManager.FROZENTABLE);
 					}
-				}
+				//}
 			}
 		}
 	}
 	
 	@SubscribeEvent
 	public static void renderHud(RenderGameOverlayEvent.Post renderEvent) {
-		if (renderEvent.getType() != RenderGameOverlayEvent.ElementType.ALL) {
+		if (renderEvent.getType() != RenderGameOverlayEvent.ElementType.ALL) { // Disable to break hunger bar
 			return;
 		} else {
 			guiFm.drawMeter();

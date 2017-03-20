@@ -2,9 +2,11 @@ package com.ashindigo.frost.gui;
 
 import java.awt.Color;
 
-import com.ashindigo.frost.FrostJournalEntries;
+import com.ashindigo.frost.FrostConstants;
+import com.ashindigo.frost.FrostResearchManager;
 
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
 
 public class GuiJournalEntry extends GuiScreen {
@@ -14,10 +16,8 @@ public class GuiJournalEntry extends GuiScreen {
 	int startX = 0, startY = 0;
 	
 	public GuiJournalEntry(int id, int x, int y) {
-		if (FrostJournalEntries.titles.size() > id) {
-			title = FrostJournalEntries.titles.get(id);
-			desc = FrostJournalEntries.desc.get(id);
-		}
+		title = I18n.format(FrostConstants.MODID + ".journal_title." + FrostResearchManager.values()[id].name);
+		desc = I18n.format(FrostConstants.MODID + ".journal_desc." + FrostResearchManager.values()[id].name);
 		this.setGuiSize(256,256);
 		startX = x;
 		startY = y;

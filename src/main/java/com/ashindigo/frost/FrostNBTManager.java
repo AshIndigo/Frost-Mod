@@ -19,7 +19,6 @@ public class FrostNBTManager {
 	
 	public static NBTTagList getPlayerFrostJournalEntries(EntityPlayer ep) {
 		return UtilsNBTHelper.getPlayerPersistedTag(ep).getTagList(FrostConstants.JOURNAL, UtilsNBTHelper.STRING);
-		
 	}
 
 	public static void setPlayerPower(EntityPlayer player, int i) {

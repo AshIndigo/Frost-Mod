@@ -10,4 +10,9 @@ public class FrostConstants {
 	public static final String JOURNAL = "frost_journal";
 	public static final String WASTELANDNAME = "Frozen Wasteland";
 	public static final String CHARGING = "FrostCharging";
+	
+	// JEI Integration
+	public static final String FROZENTABLEUID = "frost.frozentable";
+	public static final String FROZENTABLETITLE = "Frozen Crafting";
+	
 }

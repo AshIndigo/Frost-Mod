@@ -7,18 +7,20 @@ import java.util.List;
 import org.lwjgl.input.Mouse;
 
 import com.ashindigo.frost.Frost;
-import com.ashindigo.frost.FrostBlocks;
 import com.ashindigo.frost.FrostGuiHandler;
+import com.ashindigo.frost.FrostResearchManager;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.ResourceLocation;
 
 public class GuiJournal extends GuiScreen {
 	
 	int startX = 0, startY = 0;
+	public static NBTTagList resList;
 	
 	/*
 	 *  final ScaledResolution scaledresolution = new ScaledResolution(this.mc);
@@ -27,7 +29,7 @@ public class GuiJournal extends GuiScreen {
 	 *  final int k1 = Mouse.getX() * i1 / this.mc.displayWidth;
      *  final int l1 = j1 - Mouse.getY() * j1 / this.mc.displayHeight - 1;
 	 */
-	
+
 	@Override
 	public void initGui() {
 		final ScaledResolution scaledresolution = new ScaledResolution(this.mc);
@@ -39,10 +41,10 @@ public class GuiJournal extends GuiScreen {
 		int endY = l1 / 2;
 		this.buttonList.clear();
 		this.setGuiSize(256,256);
-		this.addButton(new GuiButtonItem(0, endX + (8 + 24 * 0),  endY + 16, 16, 16, "", new ItemStack(FrostBlocks.frozenTable)));
-		this.addButton(new GuiButtonItem(1, endX + (8 + 24 * 1),  endY + 16, 16, 16, "", new ItemStack(FrostBlocks.frozenTable)));
-		this.addButton(new GuiButtonItem(2, endX + (8 + 24 * 2),  endY + 16, 16, 16, "", new ItemStack(FrostBlocks.frozenTable)));
-		this.addButton(new GuiButtonItem(3, endX + (8 + 24 * 3),  endY + 16, 16, 16, "", new ItemStack(FrostBlocks.frozenTable)));
+		//if (resList != null) {
+		for (int i = 0; FrostResearchManager.values().length > i; i++) {
+			this.addButton(new GuiButtonItem(i, endX + (8 + 24 * i),  endY + 16, 16, 16, new ItemStack(FrostResearchManager.values()[i].icon)));
+		}
 	}
 
 	@Override
@@ -58,10 +60,10 @@ public class GuiJournal extends GuiScreen {
 		List<String> lst = new ArrayList<String>();
 		lst.add("Test");
 		//System.out.println(zLevel);
-		if (this.buttonList.get(2).isMouseOver()) {
-			drawHoveringText(lst, mouseX + (8 + 24 * 0), mouseY);
+		//if (this.buttonList.get(2).isMouseOver()) {
+		//	drawHoveringText(lst, mouseX + (8 + 24 * 0), mouseY);
 			//System.out.println(zLevel + 100);
-		}
+		//}
 		super.drawScreen(mouseX, mouseY, partialTicks);
 	}
 	

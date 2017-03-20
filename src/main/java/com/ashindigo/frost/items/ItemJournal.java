@@ -5,6 +5,7 @@ import com.ashindigo.frost.FrostGuiHandler;
 import com.ashindigo.indigolib.modding.UtilsItem;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
@@ -17,10 +18,15 @@ public class ItemJournal extends UtilsItem {
 		super(modid, name, translatedName);
 	}
 	
-	 public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer ep, EnumHand handIn) {
-		 if (world.isRemote) {
-			 ep.openGui(Frost.instance, FrostGuiHandler.journalID, world, ep.chunkCoordX, ep.chunkCoordY, ep.chunkCoordZ);
-		 }
-		 return new ActionResult<ItemStack>(EnumActionResult.PASS, ep.getHeldItem(handIn));
-	 }
+	@Override
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer ep, EnumHand handIn) {
+		if (ep instanceof EntityPlayerMP) {
+			// Disabling research packet
+			//Frost.INSTANCE.sendTo(new FrostListPowerPacket(UtilsNBTHelper.getPlayerPersistedTag(ep)), (EntityPlayerMP) ep);
+		}
+		if (world.isRemote) {
+			ep.openGui(Frost.instance, FrostGuiHandler.journalID, world, ep.chunkCoordX, ep.chunkCoordY, ep.chunkCoordZ);
+		}
+		return new ActionResult<ItemStack>(EnumActionResult.PASS, ep.getHeldItem(handIn));
+	}
 }

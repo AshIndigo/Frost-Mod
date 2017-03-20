@@ -24,7 +24,7 @@ public class FrozenTableRecipeHandler implements IRecipeHandler<FrozenTableRecip
 
 	@Override
 	public boolean isRecipeValid(FrozenTableRecipes ftr) {
-		return false;
+		return true;
 	}
 
 }

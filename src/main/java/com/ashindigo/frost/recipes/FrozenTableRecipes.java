@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
+import com.ashindigo.frost.FrostItems;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 
@@ -14,7 +15,7 @@ import net.minecraft.item.ItemStack;
 
 public class FrozenTableRecipes {
 	
-	// TODO Oh dear lord itemstack support
+	// TODO Burn it all and remake with a proper recipe system instead of my array hacks
 	
 	private static BiMap<Item, Object[]> recipes = HashBiMap.create();
 	private static HashMap<Item, Integer> costs = new HashMap<Item, Integer>();
@@ -22,6 +23,10 @@ public class FrozenTableRecipes {
 	public static void addRecipe(Item result, Object[] items, int cost) {
 		recipes.put(result, items);
 		costs.put(result, cost);
+	}
+	
+	public static BiMap<Item, Object[]> getAllRecipes() {
+		return recipes;
 	}
 	
 	public static void addShapelessRecipe(Item result, Object ingrediant, int cost) {
@@ -50,6 +55,10 @@ public class FrozenTableRecipes {
 				Items.ARROW, Items.ARROW, Items.ARROW,
 				Items.ARROW, Items.ARROW, Items.ACACIA_BOAT}, 0);
 		addShapelessRecipe(Item.getItemFromBlock(Blocks.ICE), Items.WATER_BUCKET, 5);
+		addRecipe(FrostItems.frostcore, new Object[]{
+				Item.getItemFromBlock(Blocks.AIR), Item.getItemFromBlock(Blocks.ICE), Item.getItemFromBlock(Blocks.AIR),
+				Item.getItemFromBlock(Blocks.ICE), Items.DIAMOND, Item.getItemFromBlock(Blocks.ICE),
+				Item.getItemFromBlock(Blocks.AIR), Item.getItemFromBlock(Blocks.ICE), Item.getItemFromBlock(Blocks.AIR)}, 50);
 	}	
 	
 	public static int getCost(ItemStack result) {

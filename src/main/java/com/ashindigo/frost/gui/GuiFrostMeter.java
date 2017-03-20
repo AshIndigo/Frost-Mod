@@ -10,6 +10,7 @@ public class GuiFrostMeter extends Gui {
 	
 	// XXX Modify hud look
 	public void drawMeter() {
+		// TODO Fix progress check
 		this.drawString(Minecraft.getMinecraft().fontRendererObj, Integer.toString(currentPower) + "/" + Integer.toString(currentMaxPower) + " FE", 460, 445, 0x00ffff);
 	}
 

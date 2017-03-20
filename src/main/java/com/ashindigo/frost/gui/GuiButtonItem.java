@@ -14,8 +14,8 @@ public class GuiButtonItem extends GuiButton {
 	
 	ItemStack icon;
 
-	public GuiButtonItem(int buttonId, int x, int y, int widthIn, int heightIn, String buttonText, ItemStack icon) {
-		super(buttonId, x, y, widthIn, heightIn, buttonText);
+	public GuiButtonItem(int buttonId, int x, int y, int widthIn, int heightIn, ItemStack icon) {
+		super(buttonId, x, y, widthIn, heightIn, "");
 		this.icon = icon;
 	}
 

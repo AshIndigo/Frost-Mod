@@ -2,3 +2,28 @@ item.frost_frostingot.name=Frost Ingot
 item.frost_journal.name=Frozen Journal
 tile.frost_frozentable.name=Frozen Crafting Table
 item.frost_icering.name=Ice Ring
+item.frost_frostcore.name=Frost Core
+item.frost_icepick.name=Ice Pick
+item.frost_creativegem.name=Creative Gem
+item.frost_hailspherelauncher.name=Hail Sphere Launcher
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+< Journal Entries >
+frost.journal_title.begin=Cold Start
+frost.journal_desc.begin=Knowledge here!
+frost.journal_title.frozentable=Icy Crafting
+frost.journal_desc.frozentable= Other Knowledge!
+
+death.attack.frost.player= couldn't handle the iceitem.frost_frostwave.name=Frost Wave
