@@ -4,6 +4,7 @@ import com.ashindigo.frost.FrostNBTManager;
 import com.ashindigo.frost.entities.EntityHailSphere;
 import com.ashindigo.indigolib.modding.UtilsItem;
 
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
@@ -13,10 +14,11 @@ import net.minecraft.world.World;
 
 public class ItemHailSphereLauncher extends UtilsItem {
 	
-	public ItemHailSphereLauncher(String modid, String name, String translatedName) {
-		super(modid, name, translatedName);
+
+	public ItemHailSphereLauncher(String modid, String name, String translatedName, CreativeTabs tab) {
+		super(modid, name, translatedName, tab);
 	}
-	
+
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer ep, EnumHand handIn) {
 		if (FrostNBTManager.getPlayerPower(ep) >= 10) {

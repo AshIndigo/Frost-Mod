@@ -26,20 +26,20 @@ public class FrostItems {
 
 	public static void preInit() {
 		// Crafting Items
-		frostingot = new UtilsItem(FrostConstants.MODID, "frostingot", "Frost Ingot");
-		frostcore = new UtilsItem(FrostConstants.MODID, "frostcore", "Frost Core");
+		frostingot = new UtilsItem(FrostConstants.MODID, "frostingot", "Frost Ingot", Frost.frostTab);
+		frostcore = new UtilsItem(FrostConstants.MODID, "frostcore", "Frost Core", Frost.frostTab);
 		
 		// Functional Items
-		journal = new ItemJournal(FrostConstants.MODID, "journal", "Frozen Journal");
-		icering = new ItemIceRing(FrostConstants.MODID, "icering", "Ice Ring");
-		icepick = new ItemIcePick(ToolMaterial.IRON, "icepick", FrostConstants.MODID, "Ice Pick", Sets.newHashSet(Blocks.ICE, Blocks.PACKED_ICE), 0, 0);
+		journal = new ItemJournal(FrostConstants.MODID, "journal", "Frozen Journal", Frost.frostTab);
+		icering = new ItemIceRing(FrostConstants.MODID, "icering", "Ice Ring", Frost.frostTab);
+		icepick = new ItemIcePick(ToolMaterial.IRON, "icepick", FrostConstants.MODID, "Ice Pick", Sets.newHashSet(Blocks.ICE, Blocks.PACKED_ICE), 0, 0, Frost.frostTab);
 		
 		// Weapons/Tools
-		hailspherelauncher = new ItemHailSphereLauncher(FrostConstants.MODID, "hailspherelauncher",  "Hail Sphere Launcher");
-		frostwave = new ItemFrostWave(Frost.frostToolmat, "frostwave", FrostConstants.MODID, "Frost Wave");
+		hailspherelauncher = new ItemHailSphereLauncher(FrostConstants.MODID, "hailspherelauncher",  "Hail Sphere Launcher", Frost.frostTab);
+		frostwave = new ItemFrostWave(Frost.frostToolmat, "frostwave", FrostConstants.MODID, "Frost Wave", Frost.frostTab);
 		
 		// Debug/Creative stuff
-		creativegem = new ItemCreativeGem(FrostConstants.MODID, "creativegem", "Creative Gem");
+		creativegem = new ItemCreativeGem(FrostConstants.MODID, "creativegem", "Creative Gem", Frost.frostTab);
 		//FrostPowerManager.addPowerItem(creativegem, 1000000);
 	}
 }

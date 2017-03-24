@@ -8,6 +8,7 @@ import com.ashindigo.frost.FrostNBTManager;
 import com.ashindigo.indigolib.modding.UtilsToolset;
 import com.ashindigo.indigolib.modding.UtilsToolset.UtilsSword;
 
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,12 +19,12 @@ import net.minecraft.world.World;
 // An AOE Blade that repairs with FE
 // That wont damage players unless its "corrupted"
 public class ItemFrostWave extends UtilsSword {
-
-	public ItemFrostWave(ToolMaterial material, String name, String modid, String translatedName) {
-		super(material, name, modid, Items.AIR, translatedName);
+	
+	public ItemFrostWave(ToolMaterial material, String name, String modid, String translatedName, CreativeTabs tab) {
+		super(material, name, modid, Items.AIR, translatedName, tab);
 		UtilsToolset.matlist.remove(Items.AIR); // Rebelling against your own api!
 	}
-	
+
 	@Override
 	public void onUpdate(ItemStack stack, World worldIn, Entity player, int itemSlot, boolean isSelected) {
 		if (player instanceof EntityPlayer) {

@@ -9,6 +9,7 @@ import com.ashindigo.indigolib.modding.UtilsBlock;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -18,8 +19,9 @@ import net.minecraft.world.World;
 
 public class BlockFrozenTable extends UtilsBlock {
 
-	public BlockFrozenTable(Material mat, String modid, String name, String translatedName) {
-		super(mat, modid, name, translatedName);
+	public BlockFrozenTable(Material mat, String modid, String name, String translatedName, CreativeTabs tab) {
+		super(mat, modid, name, translatedName, tab);
+		UtilsBlock.modBlocks.get(modid).remove(this);
 	}
 
 	@Override

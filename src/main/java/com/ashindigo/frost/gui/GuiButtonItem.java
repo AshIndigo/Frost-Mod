@@ -32,7 +32,8 @@ public class GuiButtonItem extends GuiButton {
 	@Override
 	public void drawButton(Minecraft mc, int mouseX, int mouseY) {
 		FontRenderer fontrenderer = mc.fontRendererObj;
-		mc.getRenderItem().renderItemIntoGUI(icon, xPosition, yPosition);
+		//mc.getRenderItem().renderItemIntoGUI(icon, xPosition, yPosition);
+		mc.getRenderItem().renderItemAndEffectIntoGUI(icon, xPosition, yPosition);
 		mc.getTextureManager().bindTexture(new ResourceLocation("frost:textures/gui/tab.png"));
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 		this.hovered = mouseX >= this.xPosition && mouseY >= this.yPosition && mouseX < this.xPosition + this.width && mouseY < this.yPosition + this.height;

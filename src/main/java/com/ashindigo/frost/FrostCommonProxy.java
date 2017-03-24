@@ -6,6 +6,10 @@ public class FrostCommonProxy {
 		
 	}
 	
+	public void init() {
+		
+	}
+	
 	public void bakeModels() {
 		
 	}

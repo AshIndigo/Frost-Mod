@@ -6,14 +6,16 @@ import com.ashindigo.indigolib.modding.UtilsItem;
 
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 
 public class ItemIceRing extends UtilsItem implements IFrostPowerBooster, IBauble {
 
-	public ItemIceRing(String modid, String name, String translatedName) {
-		super(modid, name, translatedName);
+
+	public ItemIceRing(String modid, String name, String translatedName, CreativeTabs tab) {
+		super(modid, name, translatedName, tab);
 	}
 
 	@Override

@@ -2,6 +2,8 @@ package com.ashindigo.frost.world;
 
 import java.util.Random;
 
+import com.ashindigo.frost.FrostBlocks;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -13,7 +15,8 @@ public class FrozenWastelandBiome extends Biome {
 		super(properties);
 		this.setRegistryName("frost", "frozen_wasteland");
 		this.spawnableCreatureList.clear();
-	    this.topBlock = Blocks.ICE.getDefaultState();
+	    //this.topBlock = Blocks.ICE.getDefaultState();
+		this.topBlock = FrostBlocks.trickIce.getDefaultState();
 	    this.fillerBlock = Blocks.WATER.getDefaultState();
         this.theBiomeDecorator.treesPerChunk = -999;
         properties.setSnowEnabled();

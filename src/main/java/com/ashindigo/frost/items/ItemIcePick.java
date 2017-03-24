@@ -6,6 +6,7 @@ import com.ashindigo.indigolib.modding.UtilsToolset.UtilsTool;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Blocks;
@@ -15,8 +16,8 @@ import net.minecraft.world.World;
 
 public class ItemIcePick extends UtilsTool {
 
-	public ItemIcePick(ToolMaterial material, String name, String modid, String translatedName, Set<Block> effectiveBlocks, float attackSpeed, float attackDamage) {
-		super(material, name, modid, translatedName, effectiveBlocks, attackSpeed, attackDamage);
+	public ItemIcePick(ToolMaterial material, String name, String modid, String translatedName, Set<Block> effectiveBlocks, float attackSpeed, float attackDamage, CreativeTabs tab) {
+		super(material, name, modid, translatedName, effectiveBlocks, attackSpeed, attackDamage, tab);
 	}
 
 	@Override
