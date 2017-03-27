@@ -19,7 +19,7 @@ public class FrostClientProxy extends FrostCommonProxy {
 	}
 	
 	public void init() {
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(FrostBlocks.frozenTable), 0, new ModelResourceLocation(FrostConstants.MODID + ":" + FrostBlocks.frozenTable.getUnlocalizedName(), "inventory"));
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(FrostBlocks.trickIce), 0, new ModelResourceLocation(FrostConstants.MODID + ":" + FrostBlocks.trickIce.getUnlocalizedName(), "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(FrostBlocks.frozenTable), 0, new ModelResourceLocation(FrostBlocks.frozenTable.getRegistryName(), "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(FrostBlocks.trickIce), 0, new ModelResourceLocation(FrostBlocks.trickIce.getRegistryName(), "inventory"));
 	}
 }

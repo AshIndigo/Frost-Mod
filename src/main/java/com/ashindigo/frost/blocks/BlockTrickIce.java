@@ -30,6 +30,9 @@ public class BlockTrickIce extends UtilsBlock {
 		super(mat, modid, name, translatedName, tab);
 		this.setTickRandomly(true);
 		UtilsBlock.modBlocks.get(FrostConstants.MODID).remove(this);
+		UtilsBlock.blockNameList.remove(this);
+		this.setHardness(0.5F);
+		this.slipperiness = 0.98F;
 	}
 	
 	@Override

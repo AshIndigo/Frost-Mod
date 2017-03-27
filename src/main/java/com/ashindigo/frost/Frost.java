@@ -42,6 +42,7 @@ import net.minecraftforge.fml.relauncher.Side;
 
 // TODO Do math magic for centering
 // TODO Weapons/Tools - Frostwave, Hail Sphere Launcher
+// TODO Items - Frozen Gem Pendant
 // TODO Terrain check for power +/-
 // TODO Machines/Blocks - Frost Discharger, Ice freezer
 // TODO Debug items - Creative Gem

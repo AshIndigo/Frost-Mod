@@ -22,6 +22,8 @@ public class BlockFrozenTable extends UtilsBlock {
 	public BlockFrozenTable(Material mat, String modid, String name, String translatedName, CreativeTabs tab) {
 		super(mat, modid, name, translatedName, tab);
 		UtilsBlock.modBlocks.get(modid).remove(this);
+		UtilsBlock.blockNameList.remove(this);
+		this.setHardness(2.6F);
 	}
 
 	@Override
