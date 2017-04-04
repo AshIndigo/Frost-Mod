@@ -17,6 +17,7 @@ public class ItemHailSphereLauncher extends UtilsItem {
 
 	public ItemHailSphereLauncher(String modid, String name, String translatedName, CreativeTabs tab) {
 		super(modid, name, translatedName, tab);
+		this.setMaxStackSize(1);
 	}
 
 	@Override

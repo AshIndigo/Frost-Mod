@@ -4,7 +4,7 @@ import javax.annotation.Nullable;
 
 import com.ashindigo.frost.Frost;
 import com.ashindigo.frost.FrostGuiHandler;
-import com.ashindigo.frost.tileentities.TileEntityFrozenTable;
+import com.ashindigo.frost.tileentities.TileEntityIceFreezer;
 import com.ashindigo.indigolib.modding.UtilsBlock;
 
 import net.minecraft.block.material.Material;
@@ -17,23 +17,20 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockFrozenTable extends UtilsBlock {
+public class BlockIceFreezer extends UtilsBlock {
 
-	public BlockFrozenTable(Material mat, String modid, String name, String translatedName, CreativeTabs tab) {
+	public BlockIceFreezer(Material mat, String modid, String name, String translatedName, CreativeTabs tab) {
 		super(mat, modid, name, translatedName, tab);
-		UtilsBlock.modBlocks.get(modid).remove(this);
-		UtilsBlock.blockNameList.remove(this);
-		this.setHardness(2.6F);
 	}
-
+	
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if (world.isRemote) {
 			return true;
 		} else {
 			TileEntity tileentity = world.getTileEntity(pos);
-			if (tileentity instanceof TileEntityFrozenTable) {
-				playerIn.openGui(Frost.instance, FrostGuiHandler.tableID, world, pos.getX(), pos.getY(), pos.getZ());
+			if (tileentity instanceof TileEntityIceFreezer) {
+				playerIn.openGui(Frost.instance, FrostGuiHandler.freezerID, world, pos.getX(), pos.getY(), pos.getZ());
 			}
 
 			return true;
@@ -41,13 +38,18 @@ public class BlockFrozenTable extends UtilsBlock {
 	}
 
 	@Nullable
-	@Override
 	public TileEntity createTileEntity(World world, IBlockState state) {
-		return new TileEntityFrozenTable();
+		return new TileEntityIceFreezer();
+	}
+	
+	@Override
+	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
+		Frost.progressMap.remove(pos);
 	}
 	
 	@Override
 	public boolean hasTileEntity(IBlockState state) {
 		return true;
 	}
+
 }

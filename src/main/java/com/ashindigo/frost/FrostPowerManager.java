@@ -35,6 +35,9 @@ public class FrostPowerManager {
 			}
 		}
 		
+		// TODO Environment Check
+		//for (ep.world.getChunkFromBlockCoords(ep.getPosition()))
+		
 		// Send the max power for the player to the client
 		if (ep instanceof EntityPlayerMP) {
 			Frost.INSTANCE.sendTo(new FrostMaxPowerPacket(currentMaxPower), ((EntityPlayerMP) ep));

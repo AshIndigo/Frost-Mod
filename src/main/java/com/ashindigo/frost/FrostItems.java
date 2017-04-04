@@ -4,6 +4,7 @@ import com.ashindigo.frost.integrate.baubles.ItemIceRing;
 import com.ashindigo.frost.items.ItemCreativeGem;
 import com.ashindigo.frost.items.ItemFrostWave;
 import com.ashindigo.frost.items.ItemHailSphereLauncher;
+import com.ashindigo.frost.items.ItemIceBinder;
 import com.ashindigo.frost.items.ItemIcePick;
 import com.ashindigo.frost.items.ItemJournal;
 import com.ashindigo.indigolib.modding.UtilsItem;
@@ -23,11 +24,13 @@ public class FrostItems {
 	public static Item creativegem;
 	public static Item hailspherelauncher;
 	public static Item frostwave;
+	public static Item icebinder;
 
 	public static void preInit() {
 		// Crafting Items
 		frostingot = new UtilsItem(FrostConstants.MODID, "frostingot", "Frost Ingot", Frost.frostTab);
 		frostcore = new UtilsItem(FrostConstants.MODID, "frostcore", "Frost Core", Frost.frostTab);
+		icebinder = new ItemIceBinder(FrostConstants.MODID, "icebinder", "Ice Binder", Frost.frostTab);
 		
 		// Functional Items
 		journal = new ItemJournal(FrostConstants.MODID, "journal", "Frozen Journal", Frost.frostTab);

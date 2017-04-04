@@ -23,6 +23,7 @@ public class ItemFrostWave extends UtilsSword {
 	public ItemFrostWave(ToolMaterial material, String name, String modid, String translatedName, CreativeTabs tab) {
 		super(material, name, modid, Items.AIR, translatedName, tab);
 		UtilsToolset.matlist.remove(Items.AIR); // Rebelling against your own api!
+		this.setMaxStackSize(1);
 	}
 
 	@Override

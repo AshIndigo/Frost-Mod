@@ -17,6 +17,7 @@ public class ItemJournal extends UtilsItem {
 	
 	public ItemJournal(String modid, String name, String translatedName, CreativeTabs tab) {
 		super(modid, name, translatedName, tab);
+		this.setMaxStackSize(1);
 	}
 
 	@Override

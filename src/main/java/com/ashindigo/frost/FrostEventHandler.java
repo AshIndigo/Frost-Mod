@@ -10,11 +10,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.event.entity.EntityEvent.EnteringChunk;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -32,6 +34,15 @@ public class FrostEventHandler {
 		if (chunkEvent.getEntity() instanceof EntityPlayer) {
 			if (FrostResearchManager.playerHasResearch((EntityPlayer) chunkEvent.getEntity(), FrostResearchManager.BEGIN)) {
 				FrostPowerManager.refreshPlayerPower((EntityPlayer) chunkEvent.getEntity());
+			}
+		}
+	}
+	
+	@SubscribeEvent
+	public static void addTooltip(ItemTooltipEvent tipEvent) {
+		if (tipEvent.getItemStack().hasTagCompound()) {
+			if (tipEvent.getItemStack().getTagCompound().getBoolean("frozen")) {
+				tipEvent.getToolTip().add(TextFormatting.AQUA + "Frozen" + TextFormatting.WHITE);
 			}
 		}
 	}

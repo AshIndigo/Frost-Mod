@@ -12,6 +12,8 @@ death.attack.frost.player=couldn't handle the ice
 
 itemGroup.frosttab=Frost
 
+frost.discharge.secure=This isn't yours!
+
 < Item and Block names >
 item.frost_frostingot.name=Frost Ingot
 item.frost_journal.name=Frozen Journal
@@ -23,3 +25,6 @@ item.frost_creativegem.name=Creative Gem
 item.frost_hailspherelauncher.name=Hail Sphere Launcher
 item.frost_frostwave.name=Frost Wave
 tile.frost_trickice.name=Trick Ice
+tile.frost_icedischarger.name=Ice Discharger
+item.frost_icebinder.name=Ice Binder
+tile.frost_icefreezer.name=Ice Freezer

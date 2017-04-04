@@ -16,6 +16,7 @@ public class ItemIceRing extends UtilsItem implements IFrostPowerBooster, IBaubl
 
 	public ItemIceRing(String modid, String name, String translatedName, CreativeTabs tab) {
 		super(modid, name, translatedName, tab);
+		this.setMaxStackSize(1);
 	}
 
 	@Override
