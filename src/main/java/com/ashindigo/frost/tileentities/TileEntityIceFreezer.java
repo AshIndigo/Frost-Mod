@@ -58,10 +58,10 @@ public class TileEntityIceFreezer extends TileEntity implements ITickable, IFros
 	public void update() {
 		if (this.getTileData().getBoolean("connected")) {
 			if(!inventory.getStackInSlot(0).isEmpty()) {
-			//	if (this.getCurrentPower(this) > 0) {
+				if (this.getCurrentPower(this) > 0) {
 					if (inventory.getStackInSlot(1).getCount() <= 64) {
 						if (progress != 50) {
-							if (!this.extractEnergy(getPowerUsage(this), this)) {
+							if (this.extractEnergy(getPowerUsage(this), this)) {
 								progress++;
 								Frost.INSTANCE.sendToAll(new FrostMachineProgressPacket(this.getPos(), progress));
 							}
@@ -80,7 +80,7 @@ public class TileEntityIceFreezer extends TileEntity implements ITickable, IFros
 							Frost.INSTANCE.sendToAll(new FrostMachineProgressPacket(this.getPos(), progress));
 						}
 					}
-				//}
+				}
 			}
 		}
 	}
@@ -92,7 +92,7 @@ public class TileEntityIceFreezer extends TileEntity implements ITickable, IFros
 
 	@Override
 	public int getPowerUsage(TileEntity te) {
-		return 5;
+		return 1;
 	}
 
 }

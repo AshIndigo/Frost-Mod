@@ -2,9 +2,12 @@ package com.ashindigo.frost.tileentities;
 
 import java.util.Iterator;
 import java.util.Map.Entry;
+import java.util.UUID;
 
+import com.ashindigo.frost.FrostNBTManager;
 import com.ashindigo.frost.api.IFrostMachine;
 
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -51,18 +54,33 @@ public class TileEntityIceDischarger extends TileEntity implements ITickable {
 
 	@Override
 	public void update() {
-		Iterator<?> arg11 = world.getChunkFromBlockCoords(this.getPos()).getTileEntityMap().entrySet().iterator();
+		if (!inventory.getStackInSlot(0).isEmpty() && inventory.getStackInSlot(0).hasTagCompound()) {
+			if (inventory.getStackInSlot(0).getTagCompound().hasKey("uuid")) {
+				Iterator<Entry<BlockPos, TileEntity>> arg11 = world.getChunkFromBlockCoords(this.getPos()).getTileEntityMap().entrySet().iterator();
 
-		while (arg11.hasNext()) {
-			Entry<?, ?> entry = (Entry<?, ?>) arg11.next();
-			BlockPos pos = (BlockPos) entry.getKey();
-			if (pos.getY() >= pos.getY() - 5 && pos.getY() <= pos.getY() + 5 && pos.getX() >= pos.getX() - 5 && pos.getX() <= pos.getX() + 5 && pos.getZ() >= pos.getZ() - 5 && pos.getZ() <= pos.getZ() + 5) {
-				TileEntity tile = (TileEntity) entry.getValue();
-				if (tile instanceof IFrostMachine) {
-					if (tile.getTileData().getBoolean("connected") == false) {
-						tile.getTileData().setBoolean("connected", true);
+				while (arg11.hasNext()) {
+					Entry<BlockPos, TileEntity> entry = arg11.next();
+					BlockPos pos = entry.getKey();
+					if (pos.getY() >= pos.getY() - 5 && pos.getY() <= pos.getY() + 5 && pos.getX() >= pos.getX() - 5 && pos.getX() <= pos.getX() + 5 && pos.getZ() >= pos.getZ() - 5 & pos.getZ() <= pos.getZ() + 5) {
+						TileEntity tile = entry.getValue();
+						if (tile instanceof IFrostMachine) {
+							if (tile.getTileData().getBoolean("connected") == false) {
+								tile.getTileData().setBoolean("connected", true);
+							}
+							charge(tile);
+						}
 					}
 				}
+			}
+		}
+	}
+	
+	public void charge(TileEntity te) {
+		EntityPlayer ep	 = te.getWorld().getPlayerEntityByUUID(UUID.fromString(inventory.getStackInSlot(0).getTagCompound().getString("uuid")));
+		if (FrostNBTManager.getPlayerPower(ep) > 5) {
+			if (((IFrostMachine) te).getMaxPowerStorage(te) > ((IFrostMachine) te).getCurrentPower(te)) {
+					((IFrostMachine) te).insertEnergy(5, te);
+					FrostNBTManager.setPlayerPower(ep, FrostNBTManager.getPlayerPower(ep) - 5);
 			}
 		}
 	}
