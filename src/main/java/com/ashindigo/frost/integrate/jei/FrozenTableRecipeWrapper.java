@@ -18,6 +18,6 @@ public class FrozenTableRecipeWrapper extends BlankRecipeWrapper {
 	@Override
 	public void getIngredients(IIngredients ingrediants) {
 		ingrediants.setInputs(ItemStack.class, Arrays.asList(recipe.recipeItems));
-		ingrediants.setOutput(ItemStack.class, recipe.getRecipeOutput().copy());
+		ingrediants.setOutputs(ItemStack.class, Arrays.asList(new ItemStack[]{recipe.getRecipeOutput().copy()}));
 	}
 }

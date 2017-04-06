@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.apache.logging.log4j.Level;
 
+import com.ashindigo.frost.api.FrozenTableRecipeAPI;
 import com.ashindigo.frost.entities.EntityHailSphere;
 import com.ashindigo.frost.network.FrostMachineProgressPacket;
 import com.ashindigo.frost.network.FrostMaxPacketManager;
@@ -61,6 +62,7 @@ import net.minecraftforge.oredict.OreDictionary;
 // TODO Structures - Ice Castle in wasteland (Makes exploring the biome worth it in later stages)
 // XXX Textures
 // TODO Generic stuff for machines to reduce code reuse
+// TODO Add FE costs for frozen table recipes
 // FE can not be used in its default state. It requires a foci to shape into something more usable
 // Energy is drained from the player into the machines
 // Encourges player to build up their terrain for power. So they can support the machines.
@@ -101,6 +103,7 @@ public class Frost extends IndigoMod {
 		GameRegistry.registerTileEntity(TileEntityIceDischarger.class, "icedischarger");
 		GameRegistry.registerTileEntity(TileEntityIceFreezer.class, "icefreezer");
 		EntityRegistry.registerModEntity(new ResourceLocation(FrostConstants.MODID, "hailsphere"), EntityHailSphere.class, "hailsphere", 0, instance, 50, 50, true);
+		FrozenTableRecipes.recipes.addAll(FrozenTableRecipeAPI.recipesAPI);
 		FrozenTableRecipes.initRecipes();
 		//proxy.preInit();
 	}

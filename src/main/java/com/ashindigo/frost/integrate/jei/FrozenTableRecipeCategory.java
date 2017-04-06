@@ -1,5 +1,6 @@
 package com.ashindigo.frost.integrate.jei;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.ashindigo.frost.FrostConstants;
@@ -86,8 +87,7 @@ public class FrozenTableRecipeCategory implements IRecipeCategory<FrozenTableRec
 
 	@Override
 	public List<String> getTooltipStrings(int mouseX, int mouseY) {
-		// TODO Auto-generated method stub
-		return null;
+		return new ArrayList<String>();
 	}
 
 }

@@ -16,5 +16,10 @@ public class FrozenTableRecipes {
 				new ItemStack(Items.ARROW), new ItemStack(Items.ARROW), new ItemStack(Items.ARROW),
 				new ItemStack(Items.ARROW), new ItemStack(Items.ARROW), new ItemStack(Items.ARROW)
 		}, new ItemStack(Items.APPLE)));	
+		recipes.add(new ShapedRecipes(3, 3, new ItemStack[]{
+				new ItemStack(Items.ARROW), new ItemStack(Items.ACACIA_DOOR), new ItemStack(Items.ARROW),
+				new ItemStack(Items.ARROW), new ItemStack(Items.ARROW), new ItemStack(Items.ARROW),
+				new ItemStack(Items.ARROW), new ItemStack(Items.ARROW), new ItemStack(Items.ARROW)
+		}, new ItemStack(Items.BANNER)));	
 	}
 }
