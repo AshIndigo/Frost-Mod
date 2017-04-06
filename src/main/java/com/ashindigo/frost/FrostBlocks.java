@@ -14,6 +14,7 @@ public class FrostBlocks {
 	public static Block trickIce;
 	public static Block iceDischarger;
 	public static Block iceFreezer;
+	public static Block frozenOreShatterer;
 	
 	public static void preInit() {
 		// Crafting

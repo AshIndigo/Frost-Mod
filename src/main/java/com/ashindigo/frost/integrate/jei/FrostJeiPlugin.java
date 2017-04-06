@@ -28,7 +28,7 @@ public class FrostJeiPlugin implements IModPlugin {
 		registry.addRecipeCategories(new IRecipeCategory[]{new FrozenTableRecipeCategory(registry.getJeiHelpers().getGuiHelper())});
 		registry.addRecipeHandlers(new IRecipeHandler[]{new FrozenTableRecipeHandler()});
 		registry.addRecipeCategoryCraftingItem(new ItemStack(FrostBlocks.frozenTable), FrostConstants.FROZENTABLEUID);
-		registry.addRecipes(FrozenTableRecipes.getAllRecipes().keySet());
+		registry.addRecipes(FrozenTableRecipes.recipes);
 		
 	}
 

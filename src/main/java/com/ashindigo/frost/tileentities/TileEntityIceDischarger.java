@@ -75,12 +75,15 @@ public class TileEntityIceDischarger extends TileEntity implements ITickable {
 		}
 	}
 	
+	// Charge the machine with FE
 	public void charge(TileEntity te) {
 		EntityPlayer ep	 = te.getWorld().getPlayerEntityByUUID(UUID.fromString(inventory.getStackInSlot(0).getTagCompound().getString("uuid")));
-		if (FrostNBTManager.getPlayerPower(ep) > 5) {
-			if (((IFrostMachine) te).getMaxPowerStorage(te) > ((IFrostMachine) te).getCurrentPower(te)) {
+		if (ep != null) {
+			if (FrostNBTManager.getPlayerPower(ep) > 5) {
+				if (((IFrostMachine) te).getMaxPowerStorage(te) > ((IFrostMachine) te).getCurrentPower(te)) {
 					((IFrostMachine) te).insertEnergy(5, te);
 					FrostNBTManager.setPlayerPower(ep, FrostNBTManager.getPlayerPower(ep) - 5);
+				}
 			}
 		}
 	}

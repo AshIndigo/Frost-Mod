@@ -1,16 +1,19 @@
  package com.ashindigo.frost;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.logging.log4j.Level;
 
 import com.ashindigo.frost.entities.EntityHailSphere;
+import com.ashindigo.frost.network.FrostMachineProgressPacket;
 import com.ashindigo.frost.network.FrostMaxPacketManager;
 import com.ashindigo.frost.network.FrostMaxPowerPacket;
 import com.ashindigo.frost.network.FrostPowerPacket;
 import com.ashindigo.frost.network.FrostPowerPacketManager;
 import com.ashindigo.frost.network.FrostProgressUpdatePacketManager;
-import com.ashindigo.frost.network.FrostMachineProgressPacket;
 import com.ashindigo.frost.recipes.FrozenTableRecipes;
 import com.ashindigo.frost.tileentities.TileEntityFrozenTable;
 import com.ashindigo.frost.tileentities.TileEntityIceDischarger;
@@ -45,20 +48,21 @@ import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.oredict.OreDictionary;
 
 
 // TODO Do math magic for centering
 // TODO Weapons/Tools - Frostwave, Hail Sphere Launcher
 // TODO Items - Frozen Gem Pendant
 // TODO Terrain check for power +/-
-// TODO Machines/Blocks - Frost Discharger, Ice freezer
+// TODO Machines/Blocks - Frost Discharger, Ice freezer, Frozen Ore Shatterer
 // TODO Debug items - Creative Gem, Creative Ice Block
 // TODO Entities - Yetis
 // TODO Structures - Ice Castle in wasteland (Makes exploring the biome worth it in later stages)
 // XXX Textures
 // TODO Generic stuff for machines to reduce code reuse
 // FE can not be used in its default state. It requires a foci to shape into something more usable
-// Energy system for the "machines" is a set value drained from the player to power the machines
+// Energy is drained from the player into the machines
 // Encourges player to build up their terrain for power. So they can support the machines.
 @Mod(modid = FrostConstants.MODID, name = "Frost", version = "0.0.1", dependencies = "required-after:indigoutils;required-after:baubles")
 public class Frost extends IndigoMod {
@@ -80,6 +84,8 @@ public class Frost extends IndigoMod {
 	public static FrostCommonProxy proxy;
 
 	public static ToolMaterial frostToolmat = EnumHelper.addToolMaterial(FrostConstants.MODID, 3, 450, 7.0F, 7.0F, 15);
+
+	public static ArrayList<String> oreList = new ArrayList<String>();
 	
 	@Override
 	@EventHandler
@@ -111,6 +117,13 @@ public class Frost extends IndigoMod {
 		// Disabling Research Packet
 		//INSTANCE.registerMessage(FrostListPacketManager.class, FrostListPowerPacket.class, 2, Side.CLIENT);
 		proxy.init();
+		logger.log(Level.INFO, "Preparing Ore List");
+		List<String> list = Arrays.asList(OreDictionary.getOreNames());
+		for (int i = 0; list.size() > i; i++) {
+			if (list.get(i).startsWith("ore")) {
+				oreList.add(list.get(i));
+			}
+		}
 	}
 
 	@Override

@@ -7,6 +7,7 @@ import com.ashindigo.frost.items.ItemHailSphereLauncher;
 import com.ashindigo.frost.items.ItemIceBinder;
 import com.ashindigo.frost.items.ItemIcePick;
 import com.ashindigo.frost.items.ItemJournal;
+import com.ashindigo.frost.items.ItemRecipeResetGem;
 import com.ashindigo.indigolib.modding.UtilsItem;
 import com.google.common.collect.Sets;
 
@@ -25,6 +26,7 @@ public class FrostItems {
 	public static Item hailspherelauncher;
 	public static Item frostwave;
 	public static Item icebinder;
+	public static Item reciperesetgem;
 
 	public static void preInit() {
 		// Crafting Items
@@ -44,5 +46,7 @@ public class FrostItems {
 		// Debug/Creative stuff
 		creativegem = new ItemCreativeGem(FrostConstants.MODID, "creativegem", "Creative Gem", Frost.frostTab);
 		//FrostPowerManager.addPowerItem(creativegem, 1000000);
+		reciperesetgem = new ItemRecipeResetGem(FrostConstants.MODID, "recipereset", "Recipe Reset Gem", Frost.frostTab);
+		
 	}
 }
