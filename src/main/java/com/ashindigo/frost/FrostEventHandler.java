@@ -113,7 +113,7 @@ public class FrostEventHandler {
 	
 	@SubscribeEvent
 	public static void renderHud(RenderGameOverlayEvent.Post renderEvent) {
-		if (renderEvent.getType() != RenderGameOverlayEvent.ElementType.ALL) { // Disable to break hunger bar
+		if (renderEvent.getType() != RenderGameOverlayEvent.ElementType.EXPERIENCE) { // Disable to break hunger bar
 			return;
 		} else {
 			guiFm.drawMeter();

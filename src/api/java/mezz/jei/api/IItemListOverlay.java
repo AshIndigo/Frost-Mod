@@ -31,6 +31,12 @@ public interface IItemListOverlay {
 	String getFilterText();
 
 	/**
+	 * @return true if the text box is focused by the player.
+	 * @since JEI 4.2.11
+	 */
+	boolean hasKeyboardFocus();
+
+	/**
 	 * @return a list containing all stacks that match the current filter.
 	 * For the list of all ItemStacks known to JEI, see {@link IIngredientRegistry#getIngredients(Class)}.
 	 */

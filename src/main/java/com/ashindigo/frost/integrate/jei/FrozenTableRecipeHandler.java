@@ -18,8 +18,8 @@ public class FrozenTableRecipeHandler implements IRecipeHandler<FrozenTableRecip
 	}
 
 	@Override
-	public IRecipeWrapper getRecipeWrapper(FrozenTableRecipes paramT) {
-		return new FrozenTableRecipeWrapper();
+	public IRecipeWrapper getRecipeWrapper(FrozenTableRecipes recipes) {
+		return new FrozenTableRecipeWrapper(recipes.recipes.get(0));
 	}
 
 	@Override
