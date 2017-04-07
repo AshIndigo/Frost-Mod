@@ -66,13 +66,13 @@ import net.minecraftforge.oredict.OreDictionary;
 // FE can not be used in its default state. It requires a foci to shape into something more usable
 // Energy is drained from the player into the machines
 // Encourges player to build up their terrain for power. So they can support the machines.
-@Mod(modid = FrostConstants.MODID, name = "Frost", version = "0.0.1", dependencies = "required-after:indigoutils;required-after:baubles")
+@Mod(modid = FrostConstants.MODID, name = FrostConstants.NAME, version = "0.0.1", dependencies = "required-after:indigoutils;required-after:baubles")
 public class Frost extends IndigoMod {
-	
+
 	@Instance(FrostConstants.MODID)
 	public static Frost instance;
 	
-	public static final CreativeTabs frostTab = new UtilsCreativeTab("frosttab", new ItemStack(FrostItems.journal), "Frost", FrostConstants.MODID);
+	public static final CreativeTabs frostTab = new UtilsCreativeTab("frosttab", new ItemStack(FrostItems.journal), FrostConstants.NAME, FrostConstants.MODID);
 	
 	public static final SimpleNetworkWrapper INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel(FrostConstants.MODID);
 	

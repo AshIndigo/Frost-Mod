@@ -23,11 +23,11 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @EventBusSubscriber(modid = FrostConstants.MODID)
 public class FrostEventHandler {
-	
-	static GuiFrostMeter guiFm = new GuiFrostMeter();
 	
 	@SubscribeEvent
 	public static void checkChunkChange(EnteringChunk chunkEvent) {
@@ -114,7 +114,7 @@ public class FrostEventHandler {
 		if (renderEvent.getType() != RenderGameOverlayEvent.ElementType.EXPERIENCE) { // Disable to break hunger bar
 			return;
 		} else {
-			guiFm.drawMeter();
+			GuiFrostMeter.INSTANCE.drawMeter();
 		}
 	}
 }

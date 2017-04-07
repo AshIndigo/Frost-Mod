@@ -6,12 +6,9 @@ import com.ashindigo.frost.containers.ContainerFrozenTable;
 import com.ashindigo.frost.gui.GuiFrozenTable;
 import com.ashindigo.frost.recipes.FrozenTableRecipes;
 
-import mezz.jei.api.IJeiRuntime;
-import mezz.jei.api.IModPlugin;
+import mezz.jei.api.BlankModPlugin;
 import mezz.jei.api.IModRegistry;
-import mezz.jei.api.ISubtypeRegistry;
 import mezz.jei.api.JEIPlugin;
-import mezz.jei.api.ingredients.IModIngredientRegistration;
 import mezz.jei.api.recipe.IRecipeCategory;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import mezz.jei.api.recipe.IRecipeWrapperFactory;
@@ -19,12 +16,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.ShapedRecipes;
 
 @JEIPlugin
-public class FrostJeiPlugin implements IModPlugin {
-
-	@Override
-	public void onRuntimeAvailable(IJeiRuntime paramIJeiRuntime) {
-		
-	}
+public class FrostJeiPlugin extends BlankModPlugin {
 
 	@Override
 	public void register(IModRegistry registry) {
@@ -42,15 +34,5 @@ public class FrostJeiPlugin implements IModPlugin {
 		registry.addRecipeClickArea(GuiFrozenTable.class, 88, 32, 28, 23, FrostConstants.FROZENTABLEUID);
 		registry.getRecipeTransferRegistry().addRecipeTransferHandler(ContainerFrozenTable.class, FrostConstants.FROZENTABLEUID, 1, 9, 10, 36);
 	}
-
-	@Override
-	public void registerIngredients(IModIngredientRegistration ingredientRegistration) {
-		
-	}
-
-	@Override
-	public void registerItemSubtypes(ISubtypeRegistry paramISubtypeRegistry) {
-		
-	}
-
+	
 }
