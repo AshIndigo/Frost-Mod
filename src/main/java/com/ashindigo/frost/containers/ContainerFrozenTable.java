@@ -5,6 +5,7 @@ import com.ashindigo.frost.recipes.FrozenTableRecipes;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -13,6 +14,8 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 	
 public class ContainerFrozenTable extends Container {
+	
+	InventoryCrafting inv = new InventoryCrafting(this, 3, 3);
 
 	public ContainerFrozenTable(EntityPlayer player, TileEntity te) {
 		// Result Slot
@@ -38,11 +41,21 @@ public class ContainerFrozenTable extends Container {
 		}
 		
 	}
-
+	
+	@Override
+	public void onCraftMatrixChanged(IInventory inventoryIn) {
+		for (int i = 0; FrozenTableRecipes.recipes.size() > i; i++) {
+			if (FrozenTableRecipes.recipes.get(i).matches(inv, null)) {
+				this.getSlot(0).putStack(FrozenTableRecipes.recipes.get(i).getCraftingResult(inv));
+				return;
+			}
+		}
+		this.getSlot(0).putStack(ItemStack.EMPTY);
+	}
+	
 	// It ticks!
 	@Override
 	public boolean canInteractWith(EntityPlayer playerIn) {
-		InventoryCrafting inv = new InventoryCrafting(this, 3, 3);
 		inv.setInventorySlotContents(0, getSlot(1).getStack());
 		inv.setInventorySlotContents(1, getSlot(2).getStack());
 		inv.setInventorySlotContents(2, getSlot(3).getStack());
@@ -52,11 +65,6 @@ public class ContainerFrozenTable extends Container {
 		inv.setInventorySlotContents(6, getSlot(7).getStack());
 		inv.setInventorySlotContents(7, getSlot(8).getStack());
 		inv.setInventorySlotContents(8, getSlot(9).getStack());
-		if (FrozenTableRecipes.recipes.get(0).matches(inv, null)) {
-			this.getSlot(0).putStack(FrozenTableRecipes.recipes.get(0).getCraftingResult(inv));
-		} else {
-			this.getSlot(0).putStack(ItemStack.EMPTY);
-		}
 		return true;
 	}
 	

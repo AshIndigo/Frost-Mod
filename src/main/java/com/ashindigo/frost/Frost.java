@@ -103,7 +103,7 @@ public class Frost extends IndigoMod {
 		GameRegistry.registerTileEntity(TileEntityIceDischarger.class, "icedischarger");
 		GameRegistry.registerTileEntity(TileEntityIceFreezer.class, "icefreezer");
 		EntityRegistry.registerModEntity(new ResourceLocation(FrostConstants.MODID, "hailsphere"), EntityHailSphere.class, "hailsphere", 0, instance, 50, 50, true);
-		FrozenTableRecipes.recipes.addAll(FrozenTableRecipeAPI.recipesAPI);
+		FrozenTableRecipes.recipes.addAll(FrozenTableRecipeAPI.getImmutableApiRecipeList());
 		FrozenTableRecipes.initRecipes();
 		//proxy.preInit();
 	}

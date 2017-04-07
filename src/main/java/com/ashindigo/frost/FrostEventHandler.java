@@ -99,15 +99,13 @@ public class FrostEventHandler {
 	
 	@SubscribeEvent
 	public static void coldCraft(ItemCraftedEvent craftEvent) {
-		if (!FrostResearchManager.playerHasResearch(craftEvent.player, FrostResearchManager.FROZENTABLE)) {
-			if (BiomeDictionary.getTypes(UtilsPlayerHelper.getPlayerBiome(craftEvent.player)).contains(Type.COLD)) {
-				//if (UtilsNBTHelper.getPlayerPersistedTag(craftEvent.player).getBoolean(FrostConstants.POWERUNLOCKED)) {
-					if (craftEvent.player.world.getBlockState(UtilsPlayerHelper.getBlockPosFromRayTrace(craftEvent.player)).getBlock() == Blocks.CRAFTING_TABLE) {
-						craftEvent.player.world.setBlockState(UtilsPlayerHelper.getBlockPosFromRayTrace(craftEvent.player), FrostBlocks.frozenTable.getBlockState().getBaseState());
-						FrostResearchManager.addResearch(craftEvent.player, FrostResearchManager.FROZENTABLE);
-					}
-				//}
-			}
+		if (BiomeDictionary.getTypes(UtilsPlayerHelper.getPlayerBiome(craftEvent.player)).contains(Type.COLD)) {
+			//if (UtilsNBTHelper.getPlayerPersistedTag(craftEvent.player).getBoolean(FrostConstants.POWERUNLOCKED)) {
+				if (craftEvent.player.world.getBlockState(UtilsPlayerHelper.getBlockPosFromRayTrace(craftEvent.player)).getBlock() == Blocks.CRAFTING_TABLE) {
+					craftEvent.player.world.setBlockState(UtilsPlayerHelper.getBlockPosFromRayTrace(craftEvent.player), FrostBlocks.frozenTable.getBlockState().getBaseState());
+					FrostResearchManager.addResearch(craftEvent.player, FrostResearchManager.FROZENTABLE);
+				}
+			//}
 		}
 	}
 	

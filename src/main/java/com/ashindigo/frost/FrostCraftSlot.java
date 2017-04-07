@@ -25,7 +25,7 @@ public class FrostCraftSlot extends SlotItemHandler {
 	public ItemStack onTake(EntityPlayer player, ItemStack stack) {
 		super.onTake(player, stack);
 		FrostResearchManager.addResearch(player, FrostResearchManager.FROZENRECIPES);
-		UtilsNBTHelper.getPlayerPersistedTag(player).setInteger("FrostPower", FrostNBTManager.getPlayerPower(player) - 5); // XXX Fix power for recipes
+		UtilsNBTHelper.getPlayerPersistedTag(player).setInteger("FrostPower", FrostNBTManager.getPlayerPower(player) - 5);
 		for (int i = 0; 9 > i; i++) {
 			inv.getStackInSlot(i).shrink(1);
 		}

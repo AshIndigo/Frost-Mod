@@ -2,6 +2,8 @@ package com.ashindigo.frost.integrate.jei;
 
 import com.ashindigo.frost.FrostBlocks;
 import com.ashindigo.frost.FrostConstants;
+import com.ashindigo.frost.containers.ContainerFrozenTable;
+import com.ashindigo.frost.gui.GuiFrozenTable;
 import com.ashindigo.frost.recipes.FrozenTableRecipes;
 
 import mezz.jei.api.IJeiRuntime;
@@ -37,7 +39,8 @@ public class FrostJeiPlugin implements IModPlugin {
 	
 		registry.addRecipeCategoryCraftingItem(new ItemStack(FrostBlocks.frozenTable), FrostConstants.FROZENTABLEUID);
 		registry.addRecipes(FrozenTableRecipes.recipes, FrostConstants.FROZENTABLEUID);
-		
+		registry.addRecipeClickArea(GuiFrozenTable.class, 88, 32, 28, 23, FrostConstants.FROZENTABLEUID);
+		registry.getRecipeTransferRegistry().addRecipeTransferHandler(ContainerFrozenTable.class, FrostConstants.FROZENTABLEUID, 1, 9, 10, 36);
 	}
 
 	@Override
