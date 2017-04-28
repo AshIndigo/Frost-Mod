@@ -1,5 +1,6 @@
 package com.ashindigo.frost;
 
+import com.ashindigo.frost.blocks.BlockFrozenOreFragmenter;
 import com.ashindigo.frost.blocks.BlockFrozenTable;
 import com.ashindigo.frost.blocks.BlockIceDischarger;
 import com.ashindigo.frost.blocks.BlockIceFreezer;
@@ -14,7 +15,7 @@ public class FrostBlocks {
 	public static Block trickIce;
 	public static Block iceDischarger;
 	public static Block iceFreezer;
-	public static Block frozenOreShatterer;
+	public static Block frozenOreFragmenter;
 	
 	public static void preInit() {
 		// Crafting
@@ -26,6 +27,7 @@ public class FrostBlocks {
 		// Machines
 		iceDischarger = new BlockIceDischarger(Material.IRON, FrostConstants.MODID, "icedischarger", "Ice Discharger", Frost.frostTab);
 		iceFreezer = new BlockIceFreezer(Material.IRON, FrostConstants.MODID, "icefreezer", "Ice Freezer", Frost.frostTab);
+		frozenOreFragmenter = new BlockFrozenOreFragmenter(Material.IRON, FrostConstants.MODID, "frozenorefragmenter", "Frozen Ore Fragmenter", Frost.frostTab);
 	}
 
 }

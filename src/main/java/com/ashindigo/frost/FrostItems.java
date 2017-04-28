@@ -7,6 +7,7 @@ import com.ashindigo.frost.items.ItemHailSphereLauncher;
 import com.ashindigo.frost.items.ItemIceBinder;
 import com.ashindigo.frost.items.ItemIcePick;
 import com.ashindigo.frost.items.ItemJournal;
+import com.ashindigo.frost.items.ItemOreChunks;
 import com.ashindigo.frost.items.ItemRecipeResetGem;
 import com.ashindigo.indigolib.modding.UtilsItem;
 import com.google.common.collect.Sets;
@@ -27,12 +28,14 @@ public class FrostItems {
 	public static Item frostwave;
 	public static Item icebinder;
 	public static Item reciperesetgem;
+	public static Item oreChunks;
 
 	public static void preInit() {
 		// Crafting Items
 		frostingot = new UtilsItem(FrostConstants.MODID, "frostingot", "Frost Ingot", Frost.frostTab);
 		frostcore = new UtilsItem(FrostConstants.MODID, "frostcore", "Frost Core", Frost.frostTab);
 		icebinder = new ItemIceBinder(FrostConstants.MODID, "icebinder", "Ice Binder", Frost.frostTab);
+		oreChunks = new ItemOreChunks(FrostConstants.MODID, "orechunks", "Ore Chunks", Frost.frostTab);
 		
 		// Functional Items
 		journal = new ItemJournal(FrostConstants.MODID, "journal", "Frozen Journal", Frost.frostTab);

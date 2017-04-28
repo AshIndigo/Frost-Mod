@@ -56,8 +56,8 @@ import net.minecraftforge.oredict.OreDictionary;
 // TODO Weapons/Tools - Frostwave, Hail Sphere Launcher
 // TODO Items - Frozen Gem Pendant
 // TODO Terrain check for power +/-
-// TODO Machines/Blocks - Frost Discharger, Ice freezer, Frozen Ore Shatterer
-// TODO Debug items - Creative Gem, Creative Ice Block
+// TODO Machines/Blocks - Frost Discharger, Ice freezer, Frozen Ore Fragmenter
+// TODO Debug items - Creative Gem, Creative Ice Block, Recipe Reset Gem
 // TODO Entities - Yetis
 // TODO Structures - Ice Castle in wasteland (Makes exploring the biome worth it in later stages)
 // XXX Textures
