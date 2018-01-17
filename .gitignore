@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # eclipse
 bin
 *.launch
@@ -24,3 +25,30 @@ run
 *.txt
 src/api/java/mezz/jei/api/**/*.class
 libs
+=======
+# eclipse
+bin
+*.launch
+.settings
+.metadata
+.classpath
+.project
+
+# idea
+out
+*.ipr
+*.iws
+*.iml
+.idea
+
+# gradle
+build
+.gradle
+
+# other
+eclipse
+run
+
+*.txt
+src/api/java/mezz/jei/api/**/*.class
+>>>>>>> branch 'master' of https://github.com/AshIndigo/Frost-Mod.git
