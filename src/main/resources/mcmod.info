@@ -1,0 +1,16 @@
+[
+{
+  "modid": "frost",
+  "name": "Frost",
+  "description": "A mod about using ice to benefit you! (Yetis possibly included)",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["AshIndigo"],
+  "credits": "Rise of the Guardians for inspiring the start of the mod",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": ["indigoutils"]
+}
+]

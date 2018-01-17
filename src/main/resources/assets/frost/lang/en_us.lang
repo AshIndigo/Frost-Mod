@@ -1,0 +1,39 @@
+< Journal Entries >
+frost.journal_title.begin=Cold Start
+frost.journal_desc.begin=While exploring the world you found a chunk of land that was completely frozen over with ice. After venturing in a bit you discovered that the terrain isn't to stable. The ice from under your feet broke and you nearly drowned. You managed to save your life luckily, you believe that this lake has given you new power though.
+frost.journal_title.frozentable=Icy Crafting
+frost.journal_desc.frozentable=While attempting to discover a foci for your power in a cold biome, you accidently froze your workbench. This new workbench is capable of focusing your power to aid in the creation of magical artifacts. (Craft an object on a standard workbench in a cold biome to obtain)
+frost.journal_title.powerdesc=Ice Power
+frost.journal_desc.powerdesc=You have a new power in you. The catch is that this power can't be used in its current form, it needs a focus to redirect and mold. Your innate limit also starts off small but can be improved by being surround by icy blocks or by wearing/holding icy items. Such as the ice ring or frozen gem pendant.
+frost.journal_title.frozenrecipes=Basic materials
+frost.journal_desc.frozenrecipes=Basic mats description.
+
+death.attack.frost.player=couldn't handle the ice
+
+itemGroup.frosttab=Frost
+
+frost.pureice.title=Pure Ice
+frost.pykrete.title=Pykrete
+frost.nitrogen.title=Nitrogen
+
+frost.discharge.secure=This isn't yours!
+
+< Item and Block names >
+item.frost:frostingot.name=Frost Ingot
+item.frost:frostcore.name=Frost Core
+item.frost:icebinder.name=Ice Binder
+item.frost:orechunks.name=Ore Chunks
+item.frost:journal.name=Frozen Journal
+item.frost:icering.name=Ice Ringen_US
+item.frost:icepick.name=Ice Pick
+item.frost:hailspherelauncher.name=Hail Sphere Launcher
+item.frost:frostwave.name=Frost Wave
+item.frost:creativegem.name=Creative Gem
+item.frost:recipereset.name=Recipe Reset Gem
+tile.frost:icedischarger.name=Ice Discharger
+tile.frost:icefreezer.name=Ice Freezer
+tile.frost:frozentable.name=Frozen Table
+tile.frost:frozenorefragmenter.name=Frozen Ore Fragmenter
+item.frost:icering.name=Ice Ring
+item.frost:icependant.name=Ice Pendant
+item.frost:upgradegem.name=Upgrade Gem
